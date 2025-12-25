@@ -3,9 +3,15 @@
 import Image from "next/image";
 import {pressStart2P} from "./layout";
 import { useState } from "react";
+import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Home() {
   const [theme, setTheme] = useState<'dmg' | 'gbc'>('dmg');
+  const [started, setStarted] = useState(false);
+
+  if (!started) {
+    return <LoadingScreen onStart={() => setStarted(true)} fontClassName={pressStart2P.className} />;
+  }
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'dmg' ? 'gbc' : 'dmg');
