@@ -42,8 +42,18 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="mt-8 md:mt-0">
-        <span className={`${pressStart2P.className} text-2xl md:text-4xl ${currentTheme.mainText} text-center block`}>Portfolio</span>
+      <div className="mt-12 md:mt-8 mb-8 flex flex-col items-center gap-4">
+        <h1 
+          className={`${pressStart2P.className} text-4xl md:text-6xl ${currentTheme.mainText} tracking-widest uppercase transform hover:scale-105 transition-transform duration-300 cursor-default`}
+          style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.25)' }}
+        >
+          PORTFOLIO
+        </h1>
+        <div className="flex gap-2 opacity-50">
+           <div className={`w-2 h-2 md:w-3 md:h-3 ${theme === 'dmg' ? 'bg-black' : 'bg-white'} animate-bounce`}></div>
+           <div className={`w-2 h-2 md:w-3 md:h-3 ${theme === 'dmg' ? 'bg-black' : 'bg-white'} animate-bounce`} style={{ animationDelay: '0.1s' }}></div>
+           <div className={`w-2 h-2 md:w-3 md:h-3 ${theme === 'dmg' ? 'bg-black' : 'bg-white'} animate-bounce`} style={{ animationDelay: '0.2s' }}></div>
+        </div>
       </div>
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-center">
@@ -52,16 +62,29 @@ export default function Home() {
           </span>
         </div>
       <div className={`w-full max-w-5xl flex flex-col-reverse md:flex-row items-center md:items-stretch gap-6 border-8 ${currentTheme.cardBorder} ${currentTheme.card} p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}>
-        <div className={`flex-1 border-4 ${currentTheme.cardBorder} border-dashed p-4 md:p-6 ${currentTheme.cardInner}`}>
-          <span className={`${pressStart2P.className} text-xs md:text-sm leading-relaxed block text-black`}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </span>
+        <div className={`flex-1 border-4 ${currentTheme.cardBorder} border-dashed p-4 md:p-6 ${currentTheme.cardInner} flex flex-col justify-center`}>
+          <div className={`${pressStart2P.className} text-xs md:text-sm text-black flex flex-col gap-4`}>
+            <div className="flex flex-col gap-1">
+              <span className="opacity-60">NAME:</span>
+              <span>PIOTR SMET</span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="opacity-60">AGE:</span>
+              <span>22</span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="opacity-60">STATUS:</span>
+              <span className="animate-pulse">STUDENT (READY TO WORK)</span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="opacity-60">DESCRIPTION:</span>
+              <span className="leading-relaxed">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </span>
+            </div>
+          </div>
         </div>
         <div className="shrink-0">
           <Image
@@ -82,7 +105,10 @@ export default function Home() {
         <div className={`w-full max-w-5xl border-8 ${currentTheme.cardBorder} ${currentTheme.card} p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {["React", "Vue", "Next.js", "TypeScript", "Tailwind", "Node.js", "Git", "Python", "SQL", "Kotlin", "Jetpack Compose", "RestAPI"].map((skill) => (
-              <div key={skill} className={`border-4 ${currentTheme.cardBorder} bg-white p-4 text-center ${currentTheme.skillHover} transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center`}>
+              <div 
+                key={skill} 
+                className={`border-4 ${currentTheme.cardBorder} bg-white p-4 text-center ${currentTheme.skillHover} transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center`}
+              >
                 <span className={`${pressStart2P.className} ${skill.length > 10 ? 'text-[10px] md:text-xs' : 'text-xs md:text-sm'} text-black`}>{skill}</span>
               </div>
             ))}
@@ -135,13 +161,27 @@ export default function Home() {
                 </div>
                 <div className="flex gap-4 mt-4">
                    {project.playLink ? (
-                     <a href={project.playLink} target="_blank" rel="noopener noreferrer" className={`flex-1 border-4 ${currentTheme.cardBorder} p-2 ${currentTheme.cardInner} hover:brightness-90 text-black ${pressStart2P.className} text-[10px] text-center transition-all active:translate-y-1 block`}>PLAY</a>
+                     <a 
+                       href={project.playLink} 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       className={`flex-1 border-4 ${currentTheme.cardBorder} p-2 ${currentTheme.cardInner} hover:brightness-90 text-black ${pressStart2P.className} text-[10px] text-center transition-all active:translate-y-1 block`}
+                     >
+                       PLAY
+                     </a>
                    ) : (
                      <button disabled className={`flex-1 border-4 ${currentTheme.cardBorder} p-2 bg-gray-400/50 opacity-50 cursor-not-allowed text-black ${pressStart2P.className} text-[10px] text-center`}>PLAY</button>
                    )}
                    
                    {project.codeLink ? (
-                     <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className={`flex-1 border-4 ${currentTheme.cardBorder} p-2 bg-white hover:bg-gray-100 text-black ${pressStart2P.className} text-[10px] text-center transition-all active:translate-y-1 block`}>CODE</a>
+                     <a 
+                       href={project.codeLink} 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       className={`flex-1 border-4 ${currentTheme.cardBorder} p-2 bg-white hover:bg-gray-100 text-black ${pressStart2P.className} text-[10px] text-center transition-all active:translate-y-1 block`}
+                     >
+                       CODE
+                     </a>
                    ) : (
                      <button disabled className={`flex-1 border-4 ${currentTheme.cardBorder} p-2 bg-gray-400/50 opacity-50 cursor-not-allowed text-black ${pressStart2P.className} text-[10px] text-center`}>CODE</button>
                    )}
@@ -150,6 +190,34 @@ export default function Home() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="flex flex-col w-full items-center gap-6 pb-20">
+         <div className={`w-full max-w-3xl border-8 ${currentTheme.cardBorder} ${currentTheme.card} p-8 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]`}>
+            <h2 className={`${pressStart2P.className} text-2xl md:text-4xl text-black mb-8 animate-pulse`}>GAME OVER</h2>
+            <div className={`${pressStart2P.className} text-black text-sm md:text-xl mb-8`}>CONTINUE?</div>
+            
+            <div className="flex flex-col gap-4 w-full max-w-md mx-auto">
+               {[
+                 { label: "EMAIL", value: "smet.piotr@gmail.com", href: "mailto:smet.piotr@gmail.com" },
+                 { label: "GITHUB", value: "github.com/piotrsmet", href: "https://github.com/piotrsmet" },
+                 { label: "LINKEDIN", value: "linkedin.com/in/piotrsmet", href: "https://linkedin.com/in/piotrsmet" }
+               ].map((item) => (
+                 <a 
+                   key={item.label}
+                   href={item.href}
+                   target={item.href.startsWith('http') ? "_blank" : undefined}
+                   rel={item.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                   className="group w-full"
+                 >
+                    <div className={`border-4 ${currentTheme.cardBorder} ${currentTheme.cardInner} p-4 flex flex-col md:flex-row justify-between items-center gap-2 transition-colors ${pressStart2P.className} text-xs md:text-sm text-black`}>
+                       <span>{item.label}</span>
+                       <span className="text-[10px] md:text-xs opacity-80">{item.value}</span>
+                    </div>
+                 </a>
+               ))}
+            </div>
+         </div>
       </div>
     </div>
   );
