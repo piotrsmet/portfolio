@@ -57,7 +57,7 @@ export default function Home() {
       </div>
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-center">
-          <span className={`${pressStart2P.className} text-3xl ${currentTheme.mainText}`}>
+          <span className={`${pressStart2P.className} text-3xl ${currentTheme.mainText}`} style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.25)' }}>
             Player 1
           </span>
         </div>
@@ -100,7 +100,7 @@ export default function Home() {
 
       <div className="flex flex-col w-full items-center gap-6">
         <div className="flex items-center justify-center">
-          <span className={`${pressStart2P.className} text-3xl ${currentTheme.mainText}`}>Skills</span>
+          <span className={`${pressStart2P.className} text-3xl ${currentTheme.mainText}`} style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.25)' }}>Skills</span>
         </div>
         <div className={`w-full max-w-5xl border-8 ${currentTheme.cardBorder} ${currentTheme.card} p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -118,7 +118,7 @@ export default function Home() {
 
       <div className="flex flex-col w-full items-center gap-6 pb-20">
         <div className="flex items-center justify-center">
-          <span className={`${pressStart2P.className} text-3xl ${currentTheme.mainText}`}>Projects</span>
+          <span className={`${pressStart2P.className} text-3xl ${currentTheme.mainText}`} style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.25)' }}>Projects</span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
           {[
