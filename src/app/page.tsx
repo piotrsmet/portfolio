@@ -214,11 +214,16 @@ export default function Home() {
                    href={item.href}
                    target={item.href.startsWith('http') ? "_blank" : undefined}
                    rel={item.href.startsWith('http') ? "noopener noreferrer" : undefined}
-                   className="group w-full"
+                   className="group w-full flex items-center gap-4"
                  >
-                    <div className={`border-4 ${currentTheme.cardBorder} ${currentTheme.cardInner} p-4 flex flex-col md:flex-row justify-between items-center gap-2 transition-colors ${pressStart2P.className} text-xs md:text-sm text-black`}>
-                       <span>{item.label}</span>
-                       <span className="text-[10px] md:text-xs opacity-80">{item.value}</span>
+                    <div className="w-4 md:w-8 flex justify-end shrink-0">
+                      <span className={`${pressStart2P.className} text-black text-lg md:text-xl opacity-0 group-hover:opacity-100 transition-opacity`}>
+                        {'>'}
+                      </span>
+                    </div>
+                    <div className={`flex-1 min-w-0 border-4 ${currentTheme.cardBorder} ${currentTheme.cardInner} p-4 flex flex-col md:flex-row justify-between items-center gap-2 transition-colors ${pressStart2P.className} text-xs md:text-sm text-black`}>
+                       <span className="shrink-0">{item.label}</span>
+                       <span className="text-[10px] md:text-xs opacity-80 truncate max-w-full">{item.value}</span>
                     </div>
                  </a>
                ))}
