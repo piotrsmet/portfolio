@@ -216,8 +216,8 @@ export default function Home() {
                    rel={item.href.startsWith('http') ? "noopener noreferrer" : undefined}
                    className="group w-full flex items-center gap-4"
                  >
-                    <div className="w-4 md:w-8 flex justify-end shrink-0">
-                      <span className={`${pressStart2P.className} text-black text-lg md:text-xl opacity-0 group-hover:opacity-100 transition-opacity`}>
+                    <div className="hidden md:flex w-8 justify-end shrink-0">
+                      <span className={`${pressStart2P.className} text-black text-xl opacity-0 group-hover:opacity-100 transition-opacity`}>
                         {'>'}
                       </span>
                     </div>
