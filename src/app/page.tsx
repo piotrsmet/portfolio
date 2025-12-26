@@ -8,6 +8,23 @@ import LoadingScreen from "@/components/LoadingScreen";
 export default function Home() {
   const [theme, setTheme] = useState<'dmg' | 'gbc'>('dmg');
   const [started, setStarted] = useState(false);
+  
+  const skills = [
+    { name: "React", desc: "Component-based UI library. +10 to Frontend Speed." },
+    { name: "Vue", desc: "Progressive framework. +8 to Flexibility." },
+    { name: "Next.js", desc: "React framework. +15 to SEO & Performance." },
+    { name: "TypeScript", desc: "Typed JavaScript. +20 to Code Safety." },
+    { name: "Tailwind", desc: "Utility-first CSS. +12 to Styling Speed." },
+    { name: "Node.js", desc: "JS runtime. +10 to Backend Capability." },
+    { name: "Git", desc: "Version control. +100 to Time Travel." },
+    { name: "Python", desc: "Versatile language. +10 to Data Science." },
+    { name: "SQL", desc: "Database language. +10 to Data Management." },
+    { name: "Kotlin", desc: "Modern Android language. +10 to Mobile Dev." },
+    { name: "Jetpack Compose", desc: "Modern toolkit for native UI. +10 to UI." },
+    { name: "RestAPI", desc: "Architectural style. +10 to Communication." },
+  ];
+
+  const [selectedSkill, setSelectedSkill] = useState<typeof skills[0] | null>(null);
 
   if (!started) {
     return <LoadingScreen onStart={() => setStarted(true)} fontClassName={pressStart2P.className} />;
@@ -106,19 +123,41 @@ export default function Home() {
 
       <div className="flex flex-col w-full items-center gap-6">
         <div className="flex items-center justify-center">
-          <span className={`${pressStart2P.className} text-3xl ${currentTheme.mainText}`} style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.25)' }}>Skills</span>
+          <span className={`${pressStart2P.className} text-3xl ${currentTheme.mainText}`} style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.25)' }}>Inventory</span>
         </div>
-        <div className={`w-full max-w-5xl border-8 ${currentTheme.cardBorder} ${currentTheme.card} p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {["React", "Vue", "Next.js", "TypeScript", "Tailwind", "Node.js", "Git", "Python", "SQL", "Kotlin", "Jetpack Compose", "RestAPI"].map((skill) => (
-              <div 
-                key={skill} 
-                className={`border-4 ${currentTheme.cardBorder} bg-white p-4 text-center ${currentTheme.skillHover} transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center`}
-              >
-                <span className={`${pressStart2P.className} ${skill.length > 10 ? 'text-[10px] md:text-xs' : 'text-xs md:text-sm'} text-black`}>{skill}</span>
-              </div>
-            ))}
+        <div className={`w-full max-w-5xl border-8 ${currentTheme.cardBorder} ${currentTheme.card} p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row gap-8`}>
+          
+          {/* Skills Grid */}
+          <div className="flex-1">
+             <h3 className={`${pressStart2P.className} text-sm mb-4 text-black`}>ITEMS:</h3>
+             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {skills.map((skill) => (
+                  <div 
+                    key={skill.name} 
+                    onMouseEnter={() => setSelectedSkill(skill)}
+                    className={`cursor-pointer border-4 ${currentTheme.cardBorder} bg-white p-2 text-center ${currentTheme.skillHover} transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center min-h-[60px] ${selectedSkill?.name === skill.name ? 'bg-yellow-200' : ''}`}
+                  >
+                    <span className={`${pressStart2P.className} ${skill.name.length > 10 ? 'text-[8px]' : 'text-[10px]'} text-black`}>{skill.name}</span>
+                  </div>
+                ))}
+             </div>
           </div>
+
+          {/* Description Box */}
+          <div className={`w-full md:w-1/3 border-4 ${currentTheme.cardBorder} ${currentTheme.cardInner} p-4 flex flex-col`}>
+             <h3 className={`${pressStart2P.className} text-sm mb-4 text-black border-b-4 ${currentTheme.cardBorder} pb-2`}>INFO:</h3>
+             <div className="flex-1 flex flex-col justify-center items-center text-center gap-4 min-h-[150px]">
+                {selectedSkill ? (
+                  <>
+                    <span className={`${pressStart2P.className} text-lg text-black`}>{selectedSkill.name}</span>
+                    <p className={`${pressStart2P.className} text-xs leading-relaxed text-black`}>{selectedSkill.desc}</p>
+                  </>
+                ) : (
+                  <p className={`${pressStart2P.className} text-xs text-black opacity-50`}>HOVER OVER AN ITEM TO SEE DETAILS</p>
+                )}
+             </div>
+          </div>
+
         </div>
       </div>
 
