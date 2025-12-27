@@ -40,14 +40,14 @@ export default function Home() {
 
   const themeDecor = {
     dmg: {
-      glowA: 'rgba(166,198,115,0.5)',
-      glowB: 'rgba(123,172,82,0.45)',
+      glowA: 'rgba(166,198,115,0.7)',
+      glowB: 'rgba(123,172,82,0.62)',
       grid: 'rgba(0,0,0,0.08)',
       scan: 'rgba(0,0,0,0.14)',
     },
     gbc: {
-      glowA: 'rgba(255,128,234,0.28)',
-      glowB: 'rgba(77,193,255,0.22)',
+      glowA: 'rgba(255,128,234,0.45)',
+      glowB: 'rgba(77,193,255,0.35)',
       grid: 'rgba(255,255,255,0.07)',
       scan: 'rgba(0,0,0,0.18)',
     }
@@ -77,9 +77,12 @@ export default function Home() {
       <div className={`${currentTheme.bg} absolute inset-0 transition-colors duration-300`} aria-hidden />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 mix-blend-screen blur-3xl"
+        className="pointer-events-none absolute inset-0 blur-3xl opacity-80"
         style={{
-          backgroundImage: `radial-gradient(circle at 18% 20%, ${themeDecor.glowA} 0, transparent 28%), radial-gradient(circle at 84% 26%, ${themeDecor.glowB} 0, transparent 30%), radial-gradient(circle at 45% 78%, ${themeDecor.glowA} 0, transparent 35%)`
+          mixBlendMode: 'screen',
+          backgroundImage: `radial-gradient(circle at 18% 20%, ${themeDecor.glowA} 0, transparent 28%), radial-gradient(circle at 84% 26%, ${themeDecor.glowB} 0, transparent 32%), radial-gradient(circle at 45% 78%, ${themeDecor.glowA} 0, transparent 36%)`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '120% 120%'
         }}
       />
       <div
