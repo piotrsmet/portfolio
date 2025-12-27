@@ -42,7 +42,7 @@ export default function LoadingScreen({ onStart, fontClassName }: LoadingScreenP
                 style={{ width: `${progress}%` }}
                 />
             </div>
-            <p className="text-xs mt-2">LOADING...</p>
+            <p className="text-xs mt-2 text-black">LOADING...</p>
           </div>
         ) : (
           <button
