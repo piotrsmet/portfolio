@@ -145,7 +145,7 @@ export default function Home() {
       </nav>
 
       <div
-        className={`md:hidden fixed top-0 bottom-0 left-0 z-30 transform transition-transform duration-300 w-[min(320px,80vw)] ${mobileNavOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`md:hidden fixed top-0 bottom-0 -left-3 z-30 transform transition-transform duration-300 w-[min(320px,80vw)] ${mobileNavOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <div className={`h-full border-r-4 ${currentTheme.cardBorder} ${currentTheme.card} px-4 py-6 shadow-[6px_0px_0px_0px_rgba(0,0,0,1)] flex flex-col gap-3 overflow-y-auto`}> 
           <span className={`${pressStart2P.className} text-xs text-black border-b-2 ${currentTheme.cardBorder} pb-2`}>MAP</span>
