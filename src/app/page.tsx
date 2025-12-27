@@ -174,7 +174,7 @@ export default function Home() {
             { title: "Lublinalia 2025 Website", desc: "Website for event Lublinalia 2025", tags: ["Wordpress", "SEO", "JavaScript", "HTML+CSS"], playLink: "https://lublinalia.pl", codeLink: "", image: "/lublinalia/lublinalia1.JPG" },
             { title: "Gameswiper", desc: "App for browsing games inspired by applications like Tinder or Swipefy", tags: ["Kotlin", "Jetpack Compose", "Firebase"], playLink: "", codeLink: "https://github.com/piotrsmet/gameswiper", image: "" },
             { title: "AptekON", desc: "Team leader and backend engineer at a pharmacies map prototype", tags: ["Node.js", "Express.js", "RestAPI"], playLink: "", codeLink: "https://github.com/piotrsmet/aptekon", image: "/aptekon/aptekon1.JPG" },
-            { title: "Wordlike", desc: "Wordle inspired app made in React", tags: ["React", "Tailwind"], playLink: "", codeLink: "https://github.com/piotrsmet/wordlike", image: "/wordlike/wordlike1.JPG" }
+            { title: "Wordlike", desc: "Wordle inspired app made in React", tags: ["React", "Tailwind"], playLink: "https://piotrsmet.github.io/Wordlike/", codeLink: "https://github.com/piotrsmet/wordlike", image: "/wordlike/wordlike1.JPG" }
           ].map((project, i) => (
             <ProjectCard key={i} project={project} theme={theme} currentTheme={currentTheme} />
           ))}
