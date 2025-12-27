@@ -106,9 +106,9 @@ export default function Home() {
             <div className="flex flex-col gap-1">
               <span className="opacity-60">DESCRIPTION:</span>
               <span className="leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                I am a third-year Computer Science student with a coding background dating back to 2017.
+                Currently, I am honing my skills as a Fullstack Developer and seeking opportunities in this field.
+                My preferred tech stack includes React for the frontend and Express.js for the backend.
               </span>
             </div>
           </div>
