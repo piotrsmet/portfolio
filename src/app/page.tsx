@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import {pressStart2P} from "./layout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
 import ProjectCard from "@/components/ProjectCard";
 
@@ -37,6 +37,18 @@ export default function Home() {
   ];
 
   const [selectedSkill, setSelectedSkill] = useState<typeof skills[0] | null>(null);
+
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+
+    if (mobileNavOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [mobileNavOpen]);
 
   if (!started) {
     return <LoadingScreen onStart={() => setStarted(true)} fontClassName={pressStart2P.className} />;
