@@ -9,6 +9,14 @@ import ProjectCard from "@/components/ProjectCard";
 export default function Home() {
   const [theme, setTheme] = useState<'dmg' | 'gbc'>('dmg');
   const [started, setStarted] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const sections = [
+    { label: 'Top', href: '#hero' },
+    { label: 'Player', href: '#player' },
+    { label: 'Inventory', href: '#inventory' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Contact', href: '#contact' },
+  ];
   
   const skills = [
     { name: "React", desc: "Component-based UI library. +10 to Frontend Speed." },
@@ -102,7 +110,59 @@ export default function Home() {
         }}
       />
 
-      <div className={`relative z-10 flex flex-col w-full p-4 min-h-screen items-center gap-10`}>       
+      {/* Desktop nav */}
+      <nav className="hidden md:flex fixed left-3 top-1/2 -translate-y-1/2 z-20" aria-label="Section navigation">
+        <div className={`flex flex-col gap-2 border-4 ${currentTheme.cardBorder} ${currentTheme.card} p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}>
+          <span className={`${pressStart2P.className} text-xs text-black mb-2 border-b-2 ${currentTheme.cardBorder} pb-2`}>MAP</span>
+          {sections.map((section) => (
+            <a
+              key={section.href}
+              href={section.href}
+              className={`${pressStart2P.className} text-[10px] text-black border-2 ${currentTheme.cardBorder} ${currentTheme.cardInner} px-3 py-2 hover:translate-x-1 transition-transform shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`}
+            >
+              {section.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      {/* Mobile nav: overlay + drawer */}
+      {mobileNavOpen && (
+        <button
+          aria-label="Close navigation overlay"
+          className="md:hidden fixed inset-0 z-20 bg-black/40"
+          onClick={() => setMobileNavOpen(false)}
+        />
+      )}
+      <nav className="md:hidden fixed left-4 bottom-4 z-30 flex items-end gap-2" aria-label="Section navigation mobile">
+        <button
+          onClick={() => setMobileNavOpen((open) => !open)}
+          aria-expanded={mobileNavOpen}
+          className={`border-4 ${currentTheme.cardBorder} ${theme === 'dmg' ? 'bg-[#652A95] text-white' : 'bg-[#CADC9F] text-black'} ${pressStart2P.className} text-[10px] px-3 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-y-[2px] active:shadow-none transition-all`}
+        >
+          MAP
+        </button>
+      </nav>
+
+      <div
+        className={`md:hidden fixed top-0 bottom-0 left-0 z-30 transform transition-transform duration-300 w-[min(320px,80vw)] ${mobileNavOpen ? 'translate-x-0' : '-translate-x-full'}`}
+      >
+        <div className={`h-full border-r-4 ${currentTheme.cardBorder} ${currentTheme.card} px-4 py-6 shadow-[6px_0px_0px_0px_rgba(0,0,0,1)] flex flex-col gap-3 overflow-y-auto`}> 
+          <span className={`${pressStart2P.className} text-xs text-black border-b-2 ${currentTheme.cardBorder} pb-2`}>MAP</span>
+          {sections.map((section) => (
+            <a
+              key={section.href}
+              href={section.href}
+              onClick={() => setMobileNavOpen(false)}
+              className={`${pressStart2P.className} text-[10px] text-black border-2 ${currentTheme.cardBorder} ${currentTheme.cardInner} px-3 py-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`}
+            >
+              {section.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div className={`relative z-10 flex flex-col w-full px-6 md:pl-28 md:pr-10 lg:pl-32 lg:pr-16 min-h-screen items-center gap-10`}>
       <div className="absolute top-2 right-2 md:top-4 md:right-4 z-10">
         <button 
           onClick={toggleTheme}
@@ -113,7 +173,7 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="mt-12 md:mt-8 mb-8 flex flex-col items-center gap-4">
+      <div id="hero" className="mt-12 md:mt-8 mb-8 flex flex-col items-center gap-4 scroll-mt-24">
         <h1 
           className={`${pressStart2P.className} text-4xl md:text-6xl ${currentTheme.mainText} tracking-widest uppercase cursor-default`}
           style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.25)' }}
@@ -126,13 +186,13 @@ export default function Home() {
            <div className={`w-2 h-2 md:w-3 md:h-3 ${theme === 'dmg' ? 'bg-black' : 'bg-white'} animate-bounce`} style={{ animationDelay: '0.2s' }}></div>
         </div>
       </div>
-    <div className="flex flex-col gap-6">
+    <div id="player" className="flex flex-col gap-6 scroll-mt-24">
       <div className="flex items-center justify-center">
           <span className={`${pressStart2P.className} text-3xl ${currentTheme.mainText}`} style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.25)' }}>
             Player 1
           </span>
         </div>
-      <div className={`w-full max-w-5xl flex flex-col-reverse md:flex-row items-center md:items-stretch gap-6 border-8 ${currentTheme.cardBorder} ${currentTheme.card} p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}>
+      <div className={`w-full max-w-4xl flex flex-col-reverse md:flex-row items-center md:items-stretch gap-6 border-8 ${currentTheme.cardBorder} ${currentTheme.card} p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}>
         <div className={`flex-1 border-4 ${currentTheme.cardBorder} border-dashed p-4 md:p-6 ${currentTheme.cardInner} flex flex-col justify-center`}>
           <div className={`${pressStart2P.className} text-xs md:text-sm text-black flex flex-col gap-4`}>
             <div className="flex flex-col gap-1">
@@ -169,11 +229,11 @@ export default function Home() {
       </div>
       </div>
 
-      <div className="flex flex-col w-full items-center gap-6">
+      <div id="inventory" className="flex flex-col w-full items-center gap-6 scroll-mt-24">
         <div className="flex items-center justify-center">
           <span className={`${pressStart2P.className} text-3xl ${currentTheme.mainText}`} style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.25)' }}>Inventory</span>
         </div>
-        <div className={`w-full max-w-5xl border-8 ${currentTheme.cardBorder} ${currentTheme.card} p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row gap-8`}>
+        <div className={`w-full max-w-4xl border-8 ${currentTheme.cardBorder} ${currentTheme.card} p-6 md:p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row gap-8`}>
           
           {/* Skills Grid */}
           <div className="flex-1">
@@ -209,11 +269,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col w-full items-center gap-6 pb-20">
+      <div id="projects" className="flex flex-col w-full items-center gap-6 pb-20 scroll-mt-24">
         <div className="flex items-center justify-center">
           <span className={`${pressStart2P.className} text-3xl ${currentTheme.mainText}`} style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.25)' }}>Projects</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
           {[
             { title: "Lublinalia 2025 Website", desc: "Website for event Lublinalia 2025", tags: ["Wordpress", "SEO", "JavaScript", "HTML+CSS"], playLink: "https://lublinalia.pl", codeLink: "", image: "/lublinalia/lublinalia1.JPG" },
             { title: "Gameswiper", desc: "App for browsing games inspired by applications like Tinder or Swipefy", tags: ["Kotlin", "Jetpack Compose", "Firebase"], playLink: "", codeLink: "https://github.com/piotrsmet/gameswiper", image: "" },
@@ -225,7 +285,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col w-full items-center gap-6 pb-20">
+      <div id="contact" className="flex flex-col w-full items-center gap-6 pb-20 scroll-mt-24">
          <div className={`w-full max-w-3xl border-8 ${currentTheme.cardBorder} ${currentTheme.card} p-8 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]`}>
             <h2 className={`${pressStart2P.className} text-2xl md:text-4xl text-black mb-8 animate-pulse`}>GAME OVER</h2>
             <div className={`${pressStart2P.className} text-black text-sm md:text-xl mb-8`}>CONTINUE?</div>
