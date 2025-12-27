@@ -38,6 +38,21 @@ export default function Home() {
     setTheme(prev => prev === 'dmg' ? 'gbc' : 'dmg');
   };
 
+  const themeDecor = {
+    dmg: {
+      glowA: 'rgba(166,198,115,0.5)',
+      glowB: 'rgba(123,172,82,0.45)',
+      grid: 'rgba(0,0,0,0.08)',
+      scan: 'rgba(0,0,0,0.14)',
+    },
+    gbc: {
+      glowA: 'rgba(255,128,234,0.28)',
+      glowB: 'rgba(77,193,255,0.22)',
+      grid: 'rgba(255,255,255,0.07)',
+      scan: 'rgba(0,0,0,0.18)',
+    }
+  }[theme];
+
   const currentTheme = {
     dmg: {
       bg: "bg-[#CADC9F]",
@@ -58,7 +73,33 @@ export default function Home() {
   }[theme];
 
   return (
-    <div className={`${currentTheme.bg} flex flex-col w-full p-4 min-h-screen items-center gap-10 transition-colors duration-300`}>
+    <div className="relative min-h-screen w-full">
+      <div className={`${currentTheme.bg} absolute inset-0 transition-colors duration-300`} aria-hidden />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 mix-blend-screen blur-3xl"
+        style={{
+          backgroundImage: `radial-gradient(circle at 18% 20%, ${themeDecor.glowA} 0, transparent 28%), radial-gradient(circle at 84% 26%, ${themeDecor.glowB} 0, transparent 30%), radial-gradient(circle at 45% 78%, ${themeDecor.glowA} 0, transparent 35%)`
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-35"
+        style={{
+          backgroundImage: `linear-gradient(${theme === 'dmg' ? '#1f2b1f' : '#ffffff'} 1px, transparent 1px), linear-gradient(90deg, ${theme === 'dmg' ? '#1f2b1f' : '#ffffff'} 1px, transparent 1px)`,
+          backgroundSize: '42px 42px'
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-25"
+        style={{
+          backgroundImage: `linear-gradient(${themeDecor.scan} 1px, transparent 1px)`,
+          backgroundSize: '100% 6px'
+        }}
+      />
+
+      <div className={`relative z-10 flex flex-col w-full p-4 min-h-screen items-center gap-10`}>       
       <div className="absolute top-2 right-2 md:top-4 md:right-4 z-10">
         <button 
           onClick={toggleTheme}
@@ -71,7 +112,7 @@ export default function Home() {
 
       <div className="mt-12 md:mt-8 mb-8 flex flex-col items-center gap-4">
         <h1 
-          className={`${pressStart2P.className} text-4xl md:text-6xl ${currentTheme.mainText} tracking-widest uppercase transform hover:scale-105 transition-transform duration-300 cursor-default`}
+          className={`${pressStart2P.className} text-4xl md:text-6xl ${currentTheme.mainText} tracking-widest uppercase cursor-default`}
           style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.25)' }}
         >
           PORTFOLIO
@@ -212,6 +253,7 @@ export default function Home() {
                ))}
             </div>
          </div>
+      </div>
       </div>
     </div>
   );
