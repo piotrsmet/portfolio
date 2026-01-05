@@ -306,7 +306,7 @@ export default function Home() {
                {[
                  { label: "EMAIL", value: "smet.piotr@gmail.com", href: "mailto:smet.piotr@gmail.com" },
                  { label: "GITHUB", value: "github.com/piotrsmet", href: "https://github.com/piotrsmet" },
-                 { label: "LINKEDIN", value: "linkedin.com/in/piotrsmet", href: "https://linkedin.com/in/piotrsmet" }
+                 { label: "LINKEDIN", value: "linkedin.com/in/piotrsmet", href: "https://www.linkedin.com/in/piotr-smęt-531739359/" }
                ].map((item) => (
                  <a 
                    key={item.label}
