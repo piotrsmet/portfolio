@@ -26,6 +26,7 @@ export default function Home() {
 		{ name: 'Vue', desc: 'Progressive framework. +8 to Flexibility.' },
 		{ name: 'Next.js', desc: 'React framework. +15 to SEO & Performance.' },
 		{ name: 'TypeScript', desc: 'Typed JavaScript. +20 to Code Safety.' },
+		{ name: 'PHP', desc: 'Server-side scripting. +10 to Backend.' },
 		{ name: 'Tailwind', desc: 'Utility-first CSS. +12 to Styling Speed.' },
 		{ name: 'Node.js', desc: 'JS runtime. +10 to Backend Capability.' },
 		{ name: 'Git', desc: 'Version control. +100 to Time Travel.' },
